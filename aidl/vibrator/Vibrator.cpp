@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2018-2021, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -60,7 +61,12 @@ namespace vibrator {
 #define MSM_CPU_SHIMA           450
 #define MSM_CPU_SM8325          501
 #define APQ_CPU_SM8325P         502
+#define MSM_CPU_TARO            457
+#define MSM_CPU_TARO_LTE        552
 #define MSM_CPU_YUPIK           475
+#define MSM_CPU_CAPE            530
+#define APQ_CPU_CAPE            531
+#define MSM_CPU_KALAMA          519
 
 #define test_bit(bit, array)    ((array)[(bit)/8] & (1<<((bit)%8)))
 
@@ -145,7 +151,9 @@ InputFFDevice::InputFFDevice()
             case MSM_CPU_SHIMA:
             case MSM_CPU_SM8325:
             case APQ_CPU_SM8325P:
+            case MSM_CPU_TARO:
             case MSM_CPU_YUPIK:
+            case MSM_CPU_KALAMA:
                 mSupportExternalControl = true;
                 break;
             default:
@@ -526,11 +534,7 @@ ndk::ScopedAStatus Vibrator::perform(Effect effect, EffectStrength es, const std
         // Return magic value for play length so that we won't end up calling on() / off()
         playLengthMs = 150;
     } else {
-#ifdef TARGET_SUPPORTS_OFFLOAD
-        if (effect < Effect::CLICK ||  effect > Effect::RINGTONE_15)
-#else
         if (effect < Effect::CLICK ||  effect > Effect::HEAVY_CLICK)
-#endif
             return ndk::ScopedAStatus(AStatus_fromExceptionCode(EX_UNSUPPORTED_OPERATION));
 
         if (es != EffectStrength::LIGHT && es != EffectStrength::MEDIUM &&
@@ -560,14 +564,8 @@ ndk::ScopedAStatus Vibrator::getSupportedEffects(std::vector<Effect>* _aidl_retu
         *_aidl_return = {Effect::CLICK, Effect::DOUBLE_CLICK, Effect::TICK, Effect::HEAVY_CLICK,
                          Effect::TEXTURE_TICK};
     } else {
-#ifdef TARGET_SUPPORTS_OFFLOAD
-        *_aidl_return = {Effect::CLICK, Effect::DOUBLE_CLICK, Effect::TICK, Effect::THUD,
-                         Effect::POP, Effect::HEAVY_CLICK, Effect::RINGTONE_12,
-                         Effect::RINGTONE_13, Effect::RINGTONE_14, Effect::RINGTONE_15};
-#else
         *_aidl_return = {Effect::CLICK, Effect::DOUBLE_CLICK, Effect::TICK, Effect::THUD,
                          Effect::POP, Effect::HEAVY_CLICK};
-#endif
     }
     return ndk::ScopedAStatus::ok();
 }
