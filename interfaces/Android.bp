@@ -363,3 +363,34 @@ aidl_interface {
     ],
     frozen: true,
 }
+
+aidl_interface {
+    name: "vendor.oplus.hardware.alertslider",
+    vendor_available: true,
+    local_include_dir: "aidl",
+    srcs: [
+        "aidl/vendor/oplus/hardware/alertslider/AlertSliderPosition.aidl",
+        "aidl/vendor/oplus/hardware/alertslider/IAlertSlider.aidl",
+    ],
+    stability: "vintf",
+    owner: "oplus",
+    backend: {
+        java: {
+            enabled: true,
+            platform_apis: true,
+        },
+        ndk: {
+            enabled: true,
+        },
+        cpp: {
+            enabled: false,
+        },
+    },
+    frozen: true,
+    versions_with_info: [
+        {
+            version: "1",
+            imports: [],
+        },
+    ],
+}
