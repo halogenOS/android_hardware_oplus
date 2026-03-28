@@ -377,7 +377,7 @@ aidl_interface {
     backend: {
         java: {
             enabled: true,
-            platform_apis: true,
+            sdk_version: "system_current",
         },
         ndk: {
             enabled: true,
