@@ -9,8 +9,6 @@ import android.net.Uri;
 import android.content.Context;
 import android.os.Bundle;
 
-import com.android.internal.telephony.IIntegerConsumer;
-
 import com.oplus.evolution.NetworklessDevice;
 import com.oplus.internal.evolution.INetworklessCallback;
 import com.oplus.internal.evolution.INetworklessConsumer;
@@ -58,7 +56,7 @@ public class NetworklessManager {
     }
 
     public void placeNetworklessCall(String subId, String caller, String callee, String token,
-            String extInfo, IIntegerConsumer consumer) {}
+            String extInfo, Object consumer) {}
 
     public boolean registerNetworklessCallback(String subId, int[] eventList,
             INetworklessCallback callback) {
