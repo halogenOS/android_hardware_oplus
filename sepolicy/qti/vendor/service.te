@@ -72,3 +72,6 @@ type hal_oplus_urcc_aidl_service, hal_service_type, service_manager_type;
 
 # Alert slider
 type hal_oplus_alertslider_aidl_service, hal_service_type, service_manager_type;
+
+# Popup camera
+type hal_oplus_popupcamera_aidl_service, hal_service_type, service_manager_type;
