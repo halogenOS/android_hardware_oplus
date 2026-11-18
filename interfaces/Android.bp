@@ -951,6 +951,7 @@ cc_library_shared {
 
 aidl_interface {
     name: "vendor.oplus.hardware.alertslider",
+    licenses: ["hardware_oplus_license"],
     vendor_available: true,
     local_include_dir: "aidl",
     srcs: [
@@ -982,6 +983,7 @@ aidl_interface {
 
 aidl_interface {
     name: "vendor.oplus.hardware.popupcamera",
+    licenses: ["hardware_oplus_license"],
     vendor_available: true,
     local_include_dir: "aidl",
     srcs: [

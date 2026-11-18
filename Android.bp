@@ -9,6 +9,32 @@ soong_namespace {
     ],
 }
 
+// Each directory lists its licenses in a package of its own. A package here would also give its
+// licenses to every file copied from a directory below that has none.
+license {
+    name: "hardware_oplus_license",
+    visibility: [":__subpackages__"],
+    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
+    license_text: [":Apache-2.0-License-Text"],
+}
+
+// The files from Qualcomm and The Linux Foundation in aidl/vibrator/qti, whose disclaimer starts
+// with THIS SOFTWARE IS PROVIDED "AS IS". The license text holds the copyright lines of those
+// files.
+license {
+    name: "hardware_oplus_bsd_3_clause_as_is_license",
+    visibility: [":__subpackages__"],
+    license_kinds: ["SPDX-license-identifier-BSD-3-Clause"],
+    license_text: ["LICENSE_BSD-3-Clause-as-is"],
+}
+
+// The files of the stock firmware of the phones.
+license {
+    name: "hardware_oplus_unfree_license",
+    visibility: [":__subpackages__"],
+    license_kinds: ["unfree"],
+}
+
 prebuilt_hidl_interfaces {
     name: "hidl_oplus_cameraextension_interface",
     interfaces: [

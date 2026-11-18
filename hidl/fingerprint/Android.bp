@@ -4,6 +4,10 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+package {
+    default_applicable_licenses: ["hardware_oplus_license"],
+}
+
 cc_binary {
     name: "android.hardware.biometrics.fingerprint@2.3-service.oplus",
     defaults: ["hidl_defaults"],

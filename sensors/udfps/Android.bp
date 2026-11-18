@@ -3,6 +3,10 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+package {
+    default_applicable_licenses: ["hardware_oplus_license"],
+}
+
 cc_library_shared {
     name: "sensors.oplus",
     defaults: ["hidl_defaults"],

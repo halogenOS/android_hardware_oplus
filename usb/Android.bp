@@ -3,6 +3,10 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+package {
+    default_applicable_licenses: ["hardware_oplus_license"],
+}
+
 prebuilt_etc {
     name: "oplus_usb_compositions.conf",
     src: "usb_compositions.conf",
